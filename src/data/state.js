@@ -13,7 +13,7 @@ eutopicCore.init(
   firebase
 )
 
-const state = {
+let state = {
   web3: null,
   connection: null,
   user: null,
@@ -23,6 +23,8 @@ const state = {
 
 const subscribers = {
   setUser: [],
+  setConnection: [],
+  setWeb3: [],
 }
 
 export const onUpdate = (actions, subscriber) => {

@@ -1,7 +1,8 @@
+import inject from '../../../services/view-loader'
+import {initConnection} from '../../../services/connection'
 import Auth from '../auth'
 import AppComponent from './index.html'
 import Ticket from '../ticket/index'
-import {initConnection} from '../../../services/connection'
 
 const App = (state) => {
   const initAuth = () => {
@@ -18,7 +19,7 @@ const App = (state) => {
     render()
     initAuth()
     initTicket()
-    initConnection()
+    initConnection(process.env.CLUSTER_ENDPOINT)
   }
 
   const render = () => {

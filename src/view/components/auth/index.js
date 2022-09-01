@@ -1,6 +1,8 @@
+import inject from '../../../services/view-loader'
 import AuthComponent from './index.html'
 import ConnectedComponent from './connected.html'
 import {setUser} from '../../../data/actions'
+import {onUpdate} from '../../../data/state'
 
 const Auth = (state) => {
   const googleLogin = async () => {
@@ -25,9 +27,10 @@ const Auth = (state) => {
     render()
     bindEvents()
 
-    onUpdate(['setUser'], async state => {
+    onUpdate(['setWeb3'], async state => {
       if(state.user) {
         inject('#auth', ConnectedComponent)
+        inject('#auth-account', state.web3.wallet.publicKey.toBase58())
       }
     })
   }

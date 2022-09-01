@@ -1,3 +1,4 @@
+import inject from '../../../services/view-loader'
 import TicketComponent from '../ticket/index.html'
 import {onUpdate} from '../../../data/state'
 

@@ -14,7 +14,8 @@ eutopicCore.init(
 )
 
 const state = {
-  web3: nill,
+  web3: null,
+  connection: null,
   user: null,
   firebase,
   eutopicCore,
@@ -24,20 +25,33 @@ const subscribers = {
   setUser: [],
 }
 
-export const onUpdate = (action, subscriber) => {
-  subscribers[action].push(subscriber)
+export const onUpdate = (actions, subscriber) => {
+  actions.forEach(action => subscribers[action].push(subscriber))
 }
 
-const notify = action => subscribers[action].forEach(n => n(state))
+const notify = action => {
+  for (let i = 0; i < subscribers[action].length; i++) {
+    const subscriber = subscribers[action][i]
+    await subscriber(state)
+  }
+}
 
-export const update = (action) => {
+export const update = async (action) => {
   switch(action.type) {
     case 'setUser':
       state = {...state, user: action.value}
-      notify(action.type)
+      break
+    case 'setConnection':
+      state = {...state, connection: action.value}
+      break
+    case 'setWeb3':
+      state = {...state, web3: action.value}
+      break
     default:
       return state
   }
+
+  notify(action.type)
 }
 
 export const getState = () => {

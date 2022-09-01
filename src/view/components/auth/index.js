@@ -1,4 +1,5 @@
 import AuthComponent from './index.html'
+import ConnectedComponent from './connected.html'
 import {setUser} from '../../../data/actions'
 
 const Auth = (state) => {
@@ -15,14 +16,24 @@ const Auth = (state) => {
     const googleLoginBtn = document.querySelector('#google-login-btn')
     googleLoginBtn.onclick = googleLogin
 
-    state.firebase.onUserChanged(currentUser => {
-      setUser(currentUser)
+    state.firebase.onUserChanged(async currentUser => {
+      await setUser(currentUser)
     })
   }
 
   const init = () => {
-    inject('#auth', AuthComponent)
+    render()
     bindEvents()
+
+    onUpdate(['setUser'], async state => {
+      if(state.user) {
+        inject('#auth', ConnectedComponent)
+      }
+    })
+  }
+
+  const render = () => {
+    inject('#auth', AuthComponent)
   }
 
   return {init}

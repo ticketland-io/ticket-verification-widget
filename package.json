@@ -5,6 +5,9 @@
   "repository": "git@github.com:ticketland-io/ticket-verification-widget.git",
   "author": "Pavlos Polianidis <info@ticketland.io> (https://ticketland.io)",
   "license": "MIT",
+  "scripts": {
+    "dev": "NODE_ENV=development PORT=3000 ./node_modules/.bin/webpack serve"
+  },
   "dependencies": {
     "@apocentre/solana-web3": "Apocentre/solana-web3",
     "@project-serum/anchor": "^0.25.0",

@@ -1,0 +1,15 @@
+{
+  "name": "ticket-verification-widget",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ticketland-io/ticket-verification-widget.git",
+  "author": "Pavlos Polianidis <info@ticketland.io> (https://ticketland.io)",
+  "license": "MIT",
+  "dependencies": {
+    "@apocentre/solana-web3": "Apocentre/solana-web3",
+    "@ticketland-io/eutopic-core": "0.1.17",
+    "@ticketland-io/eutopic-firebase-auth": "0.1.17",
+    "@ticketland-io/eutopic-solana-wallet": "0.1.17",
+    "@ticketland-io/eutopic-web-enclave": "0.1.17"
+  }
+}

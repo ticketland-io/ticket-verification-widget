@@ -16,10 +16,14 @@ eutopicCore.init(
 )
 
 export const state = asyncable(async () => {
+  const urlSearchParams = new URLSearchParams(window.location.search)
+  const qs = Object.fromEntries(urlSearchParams.entries())
+
   return {
     web3: null,
     connection: null,
     user: null,
+    qs
   }
 })
 
@@ -32,7 +36,7 @@ state.subscribe(async newState => {
     await web3.init(newState.connection, custodyWallet)
 
     state.set({
-      ...state,
+      ...newState,
       web3,
     })
   }

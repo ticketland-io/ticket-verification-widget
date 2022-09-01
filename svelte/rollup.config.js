@@ -23,6 +23,7 @@ function serve() {
 	}
 
 	return {
+		https: true,
 		writeBundle() {
 			if (server) return;
 			server = require('child_process').spawn('npm', ['run', 'start', '--', '--dev'], {
@@ -64,6 +65,9 @@ export default {
 			browser: true,
 			preferBuiltins: false,
 			dedupe: ['svelte'],
+			alias: {
+				'assert': 'assert',
+			}
 		}),
 		commonjs({
 			// transformMixedEsModules: true,
@@ -84,7 +88,7 @@ export default {
 
 		json(),
 		replace(parseStringifiedEnv(envPath)),
-		// babel({babelHelpers: 'bundled'}),
+		babel({babelHelpers: 'bundled'}),
 		nodePolyfills()
 	],
 	watch: {

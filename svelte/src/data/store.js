@@ -1,4 +1,5 @@
 import {asyncable} from 'svelte-asyncable'
+import Web3 from '@apocentre/solana-web3'
 import EutopicCore from '@ticketland-io/eutopic-core'
 import EutopicSolanaWallet from '@ticketland-io/eutopic-solana-wallet'
 import Enclave from '@ticketland-io/eutopic-web-enclave'
@@ -23,6 +24,8 @@ export const state = asyncable(async () => {
 })
 
 state.subscribe(async newState => {
+  newState = await newState
+  
   if(newState.user && newState.connection && !newState.web3) {
     const web3 = Web3()
     const custodyWallet = await eutopicCore.bootstrap(newState.user)

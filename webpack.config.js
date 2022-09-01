@@ -16,7 +16,7 @@ module.exports = () => {
     context: sourcePath,
 
     entry: { 
-      main: './src/view/index.jsx',
+      main: './src/view/index.js',
     },
     
     output: {

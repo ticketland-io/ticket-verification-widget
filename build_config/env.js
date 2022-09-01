@@ -1,5 +1,5 @@
-const dotenv = require('dotenv')
-const fs = require('fs')
+import dotenv from 'dotenv'
+import fs from 'fs'
 
 const parseEnv = envPath => {
   const parsed = fs.readFileSync(envPath, 'utf8')
@@ -19,6 +19,4 @@ const parseStringifiedEnv = envPath => {
   return stringifiedEnv
 }
 
-module.exports = {
-  parseStringifiedEnv
-}
+export default parseStringifiedEnv

@@ -1,12 +1,4 @@
+/node_modules/
+/public/build/
+
 .DS_Store
-node_modules
-DevNotes.md
-.dev.secret
-.config.json
-error.log
-info.log
-Bugs.md
-src/.npmrc
-dist/
-build
-.npmrc

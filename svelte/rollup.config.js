@@ -4,8 +4,16 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
+import json from '@rollup/plugin-json';
+import replace from '@rollup/plugin-replace';
+import {babel} from '@rollup/plugin-babel'
+import nodePolyfills from 'rollup-plugin-polyfill-node'
+import parseStringifiedEnv from './build_config/env'
+import path from 'path'
 
 const production = !process.env.ROLLUP_WATCH;
+
+const envPath = path.join(__dirname, `./.env.${process.env.NODE_ENV}`)
 
 function serve() {
 	let server;
@@ -54,9 +62,13 @@ export default {
 		// https://github.com/rollup/plugins/tree/master/packages/commonjs
 		resolve({
 			browser: true,
-			dedupe: ['svelte']
+			preferBuiltins: false,
+			dedupe: ['svelte'],
 		}),
-		commonjs(),
+		commonjs({
+			// transformMixedEsModules: true,
+      include: 'node_modules/**',
+		}),
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
@@ -68,7 +80,12 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		production && terser(),
+
+		json(),
+		replace(parseStringifiedEnv(envPath)),
+		// babel({babelHelpers: 'bundled'}),
+		nodePolyfills()
 	],
 	watch: {
 		clearScreen: false

@@ -1,5 +1,5 @@
 import TicketComponent from '../ticket/index.html'
-import {onUpdate} from '../../../data/actions'
+import {onUpdate} from '../../../data/state'
 
 const Ticket = () => {
   const render = () => {

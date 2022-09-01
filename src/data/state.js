@@ -29,7 +29,7 @@ export const onUpdate = (actions, subscriber) => {
   actions.forEach(action => subscribers[action].push(subscriber))
 }
 
-const notify = action => {
+const notify = async action => {
   for (let i = 0; i < subscribers[action].length; i++) {
     const subscriber = subscribers[action][i]
     await subscriber(state)
@@ -51,7 +51,7 @@ export const update = async (action) => {
       return state
   }
 
-  notify(action.type)
+  await notify(action.type)
 }
 
 export const getState = () => {

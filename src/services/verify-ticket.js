@@ -2,6 +2,7 @@ import * as borsh from 'borsh'
 import * as bs58 from 'bs58'
 import nacl from 'tweetnacl'
 import keccak256 from 'keccak256'
+import {verifyTicket} from './ticket'
 
 // TODO: move all this logic to the online ticket verification app
 class VerifyTicketMsg {
@@ -21,7 +22,7 @@ const VerifyTicketMsgType = {
   ]
 }
 
-export const verify = async (web3, eventId, codeChallenge, ticketMetadata) => {
+export const verify = async (web3, eventId, codeChallenge, ticketMetadata, ticketOwnerPubkey) => {
   const msg = new VerifyTicketMsg(eventId, codeChallenge, ticketMetadata)
   const schema = new Map([[VerifyTicketMsg, VerifyTicketMsgType]]);
 
@@ -32,7 +33,13 @@ export const verify = async (web3, eventId, codeChallenge, ticketMetadata) => {
   console.log('message >>>>>> ', bs58.encode(message))
   console.log('sig >>>>>> ', bs58.encode(sig))
 
-  const response = await verifyTicket()
+  return await verifyTicket(
+    ticketMetadata,
+    eventId,
+    codeChallenge,
+    ticketOwnerPubkey, 
+    bs58.encode(sig)
+  )
 }
 
 class SeverVerificationMsg {

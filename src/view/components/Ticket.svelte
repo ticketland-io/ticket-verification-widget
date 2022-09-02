@@ -1,5 +1,4 @@
 <script>
-  import * as anchor from '@project-serum/anchor'
   import {onMount} from 'svelte'
   import {fetchMetadata} from '../../web3/ipfs'
   import {verify} from '../../services/verify-ticket'
@@ -18,7 +17,7 @@
       state.web3,
       normalizeEventId(eventId),
       state.qs.codeChallenge,
-      new anchor.web3.PublicKey(ticket.ticket_metadata)
+      state.account.pubkey,
     )
   }
 </script>

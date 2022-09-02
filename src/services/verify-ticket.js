@@ -31,6 +31,8 @@ export const verify = async (web3, eventId, codeChallenge, ticketMetadata) => {
   console.log('msg >>>>>> ', JSON.stringify(msg))
   console.log('message >>>>>> ', bs58.encode(message))
   console.log('sig >>>>>> ', bs58.encode(sig))
+
+  const response = await verifyTicket()
 }
 
 class SeverVerificationMsg {
@@ -53,7 +55,7 @@ const ServerVerificationMsgType = {
   ]
 }
 
-export const validate_server_verification_response = async (codeChallenge, response, ticketLandApiPubKey) => {
+export const validateServerVerificationResponse = async (codeChallenge, response, ticketLandApiPubKey) => {
   // the original code challenge must match the one Ticketland API has included in the signed message
   if(codeChallenge !== response.code_challenge) {
     throw new Error('Verification failed')

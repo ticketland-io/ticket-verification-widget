@@ -1,6 +1,5 @@
 <script>
   import {onMount} from 'svelte'
-  import {fetchTicketMetadata} from '../../web3/ticket-nft/state'
   import {fetchMetadata} from '../../web3/ipfs'
   
   let ticket

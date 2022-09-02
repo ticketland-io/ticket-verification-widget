@@ -3,26 +3,28 @@
   import {fetchMetadata} from '../../web3/ipfs'
   import {verify} from '../../services/verify-ticket'
   import {normalizeEventId} from '../../services/ticket'
-  import {state} from '../../data/store'
+  import {web3, qs, account} from '../../data/store'
   
-  let ticket = {}
-  let ipfsMetadata = {}
+  export let ticket
+  let ipfsMetadata
 
   onMount(async () => {
-    ipfsMetadata = await fetchMetadata(ticket?.metadata_cid)
+    ipfsMetadata = await fetchMetadata(ticket.metadata_cid)
   })
 
   const verifyTicket = async () => {
     await verify(
-      state.web3,
+      await web3.get(),
       normalizeEventId(eventId),
-      state.qs.codeChallenge,
-      state.account.pubkey,
+      qs.codeChallenge,
+      (await account()).publicKey,
     )
   }
 </script>
 
 <div>
-  <p>{ipfsMetadata?.name} #{ticket?.seat_name}</p>
-  <button on:click={verifyTicket}>Select</button>
+  {#if ipfsMetadata}
+    <p>{ipfsMetadata.name} #{ticket.seat_name}</p>
+    <button on:click={verifyTicket}>Select</button>
+  {/if}
 </div>

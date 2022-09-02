@@ -1,17 +1,15 @@
 <script>
+  import {get} from 'svelte/store'
   import Ticket from './Ticket.svelte'
-  import {state} from '../../data/store'
+  import {web3, qs} from '../../data/store'
   import {fetchTickets} from '../../services/ticket'
 
   export let tickets = []
 
-  state.subscribe(async newState => {
-    const stateData = await newState
-
-    if(stateData.web3) {
-      const response = await fetchTickets(stateData.qs.eventId)
+  web3.subscribe(async $web3 => {
+    if(await $web3) {
+      const response = await fetchTickets(get(qs).eventId)
       tickets = response.result
-      console.log('>>>>>>>>', tickets)
     }
   })
 

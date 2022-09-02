@@ -1,6 +1,14 @@
 <script>
-  import {state, firebase} from '../../data/store'
+  import {web3, user, firebase} from '../../data/store'
   
+  web3.subscribe(async _web3 => {
+    const web3 = await _web3
+
+    if(web3) {
+      publicKey = web3.wallet.publicKey.toBase58()
+    }
+  })
+
   const googleLogin = async () => {
     try {
       await firebase.signInWithGoogle()
@@ -11,23 +19,14 @@
   }
 
   firebase.onUserChanged(currentUser => {
-    state.update($state => {
-      $state.user = currentUser
-      return $state
+    user.update($user => {
+      $user = currentUser
+      return $user
     })
   })
 
 
   export let publicKey = ''
-
-  state.subscribe(async newState => {
-    newState = await newState
-    
-    if(newState.web3) { 
-      publicKey = newState.web3.wallet.publicKey.toBase58()
-    }
-  })
-
 </script>
 
 <div id="auth-component">

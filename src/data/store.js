@@ -1,4 +1,5 @@
 import {asyncable} from 'svelte-asyncable'
+import {writable} from 'svelte/store'
 import Web3 from '@apocentre/solana-web3'
 import EutopicCore from '@ticketland-io/eutopic-core'
 import EutopicSolanaWallet from '@ticketland-io/eutopic-solana-wallet'
@@ -15,29 +16,25 @@ eutopicCore.init(
   firebase
 )
 
-export const state = asyncable(async () => {
-  const urlSearchParams = new URLSearchParams(window.location.search)
-  const qs = Object.fromEntries(urlSearchParams.entries())
+const urlSearchParams = new URLSearchParams(window.location.search)
+export const qs = writable(Object.fromEntries(urlSearchParams.entries()))
 
-  return {
-    web3: null,
-    connection: null,
-    user: null,
-    qs
-  }
-})
+export const user = asyncable(() => null)
+export const connection = asyncable(() => null)
 
-state.subscribe(async newState => {
-  newState = await newState
-  
-  if(newState.user && newState.connection && !newState.web3) {
+export const web3 = asyncable(async($user, $connection) => {
+  const user = await $user
+  const connection = await $connection
+
+  if(user && connection) {
     const web3 = Web3()
-    const custodyWallet = await eutopicCore.bootstrap(newState.user)
-    await web3.init(newState.connection, custodyWallet)
+    const custodyWallet = await eutopicCore.bootstrap(user)
+    await web3.init(connection, custodyWallet)
 
-    state.set({
-      ...newState,
-      web3,
-    })
+    return web3
   }
-})
+}, undefined, [user, connection])
+
+export const account = asyncable(async($user) => {
+  return await eutopicCore.fetchAccount()
+}, undefined, [user])

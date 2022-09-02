@@ -20,22 +20,25 @@ const VerifyTicketMsgType = {
   ]
 }
 
-export const verify = async (web3, eventId, codeChallenge, ticketMetadata, ticketOwnerPubkey) => {
+export const verify = async (web3, eventId, codeChallenge, ticketMetadata, ticketOwnerPubkey, targetOrigin) => {
   const msg = new VerifyTicketMsg(eventId, codeChallenge, ticketMetadata)
   const schema = new Map([[VerifyTicketMsg, VerifyTicketMsgType]]);
 
   const message = borsh.serialize(schema, msg)
   const sig = await web3.anchorProvider.wallet.signMessage(message)
 
-  console.log('msg >>>>>> ', JSON.stringify(msg))
-  console.log('message >>>>>> ', bs58.encode(message))
-  console.log('sig >>>>>> ', bs58.encode(sig))
-
-  return await verifyTicket(
+  const response = await verifyTicket(
     ticketMetadata,
     eventId,
     codeChallenge,
     ticketOwnerPubkey, 
     bs58.encode(sig)
   )
+
+  const data = {
+    ...response,
+    target: 'ticketland-widget'
+  }
+
+  window.opener.postMessage(data, targetOrigin)
 }

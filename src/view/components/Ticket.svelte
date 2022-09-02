@@ -23,7 +23,8 @@
       normalizeEventId(_qs.eventId),
       _qs.codeChallenge,
       ticket.ticket_metadata,
-      _account.pubkey
+      _account.pubkey,
+      _qs.targetOrigin,
     )
   }
 </script>

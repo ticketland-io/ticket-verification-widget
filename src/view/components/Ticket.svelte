@@ -1,5 +1,6 @@
 <script>
   import {onMount} from 'svelte'
+  import {get} from 'svelte/store'
   import {fetchMetadata} from '../../web3/ipfs'
   import {verify} from '../../services/verify-ticket'
   import {normalizeEventId} from '../../services/ticket'
@@ -13,11 +14,16 @@
   })
 
   const verifyTicket = async () => {
+    const _qs = get(qs)
+    const _account = await account.get()
+    const _web3 = await web3.get()
+
     await verify(
-      await web3.get(),
-      normalizeEventId(eventId),
-      qs.codeChallenge,
-      (await account()).publicKey,
+      _web3,
+      normalizeEventId(_qs.eventId),
+      _qs.codeChallenge,
+      ticket.ticket_metadata,
+      _account.pubkey,
     )
   }
 </script>

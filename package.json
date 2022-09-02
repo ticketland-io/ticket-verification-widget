@@ -17,10 +17,8 @@
     "assert": "^2.0.0",
     "borsh": "^0.7.0",
     "bs58": "^5.0.0",
-    "keccak256": "^1.0.6",
     "svelte": "^3.49.0",
-    "svelte-asyncable": "^2.1.0",
-    "tweetnacl": "^1.0.3"
+    "svelte-asyncable": "^2.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.13",

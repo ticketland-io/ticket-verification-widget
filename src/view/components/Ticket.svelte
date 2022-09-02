@@ -18,13 +18,16 @@
     const _account = await account.get()
     const _web3 = await web3.get()
 
-    await verify(
+    const serverReponse = await verify(
       _web3,
       normalizeEventId(_qs.eventId),
       _qs.codeChallenge,
       ticket.ticket_metadata,
       _account.pubkey,
     )
+  
+    // TODO: send this to the parent frame
+    console.log('>>>>>>>', serverReponse)
   }
 </script>
 

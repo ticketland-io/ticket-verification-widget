@@ -970,18 +970,18 @@
   resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-common/0.1.17/f106628ea938259ce0b4b235841951feb48962e1#f106628ea938259ce0b4b235841951feb48962e1"
   integrity sha512-7+QnCaJSOPdgsD8nnLEl1wrF+PaZAiXFYquJiwsZYOQuckfOkxolGKzdNEEOC/CCd7JZMougyjoye2c5NS0fsg==
 
-"@ticketland-io/eutopic-core@0.1.17":
-  version "0.1.17"
-  resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-core/0.1.17/ae9e6f75f55033f36c0ca6d66af4c581d8003372#ae9e6f75f55033f36c0ca6d66af4c581d8003372"
-  integrity sha512-CcWusg6IfrvmlpL2Aqxf/0+uNR9XUjNCE7FfkMRTb3x4DI8KwVSQSsQIOoo4VlvXpR45lkwB71ZkmRroIUpL/Q==
+"@ticketland-io/eutopic-core@0.1.22":
+  version "0.1.22"
+  resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-core/0.1.22/456af24ca9d20ae697cdb5c5843f01e4d601ae95#456af24ca9d20ae697cdb5c5843f01e4d601ae95"
+  integrity sha512-T6ERzOQ/RryTODt6T6HvIsWT5tiOQsLf4gCDPzTgeV3NL7+C2isK5PFb4y7TeCyQaWDN39pt9Mm87d1jaUKLDQ==
   dependencies:
     "@ppoliani/im-record" "^2.0.0"
     "@ticketland-io/eutopic-common" "^0.1.13"
 
-"@ticketland-io/eutopic-firebase-auth@0.1.17":
-  version "0.1.17"
-  resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-firebase-auth/0.1.17/22c5a328446079ea6e6a9ccccb0c158cb41a2f49#22c5a328446079ea6e6a9ccccb0c158cb41a2f49"
-  integrity sha512-UReXKWbwNiW72sCaPdb/dKcOllMFfmN/DQ150S7TsEaPIXFkuAud7G/Od6Pm5e/olttm5YnnJGChHM982KBNbg==
+"@ticketland-io/eutopic-firebase-auth@0.1.22":
+  version "0.1.22"
+  resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-firebase-auth/0.1.22/04a5677efc07bd506c36d681574131c97c96c798#04a5677efc07bd506c36d681574131c97c96c798"
+  integrity sha512-PA0SC1jXlq9oJ9ipr6N3GX0UQdbJG4H4Z0uln2zzY+q1HVMVkQ8r1Gfasj35Zvj8UVyPB51GBE957Dh/mwAuYw==
   dependencies:
     "@ppoliani/im-record" "^2.0.0"
     firebase "^9.9.1"
@@ -993,10 +993,10 @@
   dependencies:
     "@ppoliani/im-record" "^2.0.0"
 
-"@ticketland-io/eutopic-solana-wallet@0.1.17":
-  version "0.1.17"
-  resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-solana-wallet/0.1.17/287ee1a8eeecc8d1f37976d6121013280b2b0c37#287ee1a8eeecc8d1f37976d6121013280b2b0c37"
-  integrity sha512-rjlkYXRYZLbDwA32ntoilzpFL34iDenwUOWMKGp8rAmzjAmT0kvodFduWqAreEHKtmwpLCI4m3dkmKMDfDpE5Q==
+"@ticketland-io/eutopic-solana-wallet@0.1.22":
+  version "0.1.22"
+  resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-solana-wallet/0.1.22/59c90425036c84ac8f7d168d387b916bb5337823#59c90425036c84ac8f7d168d387b916bb5337823"
+  integrity sha512-qwfUbFaiI0jqjwFXKR+v+ta4e/ld7YimOMKg+NnEuBwKbA7GhXZw9n1SVZz5dq2dtWU9jwKZAmp9RAkkx1ErLA==
   dependencies:
     "@ppoliani/im-record" "^2.0.0"
     "@project-serum/anchor" "^0.25.0"
@@ -1006,7 +1006,17 @@
     keccak256 "^1.0.6"
     tweetnacl "^1.0.3"
 
-"@ticketland-io/eutopic-web-enclave@0.1.17", "@ticketland-io/eutopic-web-enclave@^0.1.0":
+"@ticketland-io/eutopic-web-enclave@0.1.22":
+  version "0.1.22"
+  resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-web-enclave/0.1.22/c2637a02c9c95624df0d081d8c945d0a81e5dce4#c2637a02c9c95624df0d081d8c945d0a81e5dce4"
+  integrity sha512-1Ibwy6YbkofWX6So+misjQYfmtVUf4P7Lz0HkTetst5KnHspO85pTkM9Vknd50HvxdBBa3yGMXJwEP2p25dZZQ==
+  dependencies:
+    "@ppoliani/im-record" "^2.0.0"
+    "@project-serum/anchor" "^0.25.0"
+    "@ticketland-io/eutopic-indexdb-storage" "^0.1.13"
+    bip39 "^3.0.4"
+
+"@ticketland-io/eutopic-web-enclave@^0.1.0":
   version "0.1.17"
   resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-web-enclave/0.1.17/6ca4dd28f48cdebd7b023efe491a488b86b6b1f9#6ca4dd28f48cdebd7b023efe491a488b86b6b1f9"
   integrity sha512-OI8+2Uj8WRbIctEF9l561Fg4FHzmG5dWTJaIKpcgRikpmfWZCrCdGa+pSOVzjnC0FR1vvJvKruBLbXQ7dtPkpw==

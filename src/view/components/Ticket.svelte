@@ -1,16 +1,17 @@
 <script>
   import {onMount} from 'svelte'
   import {get} from 'svelte/store'
-  import {fetchMetadata} from '../../web3/ipfs'
+  import {fetchMetadata} from '../../services/s3'
   import {verify} from '../../services/verify-ticket'
   import {normalizeEventId} from '../../services/ticket'
   import {web3, qs, account} from '../../data/store'
   
   export let ticket
-  let ipfsMetadata
+  let nftMetadata
 
   onMount(async () => {
-    ipfsMetadata = await fetchMetadata(ticket.metadata_cid)
+    const _qs = get(qs)
+    nftMetadata = await fetchMetadata(_qs.eventId)
   })
 
   const verifyTicket = async () => {
@@ -30,8 +31,8 @@
 </script>
 
 <div>
-  {#if ipfsMetadata}
-    <p>{ipfsMetadata.name} #{ticket.seat_name}</p>
+  {#if nftMetadata}
+    <p>{nftMetadata.name} #{ticket.seat_name}</p>
     <button on:click={verifyTicket}>Select</button>
   {/if}
 </div>

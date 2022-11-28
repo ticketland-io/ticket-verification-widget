@@ -1,10 +1,10 @@
 <script>
   import { web3, user, firebase } from "../../../data/store";
   import { useState, useEffect } from "../../../data/hooks";
-  import LoginForm from "./LoginForm.svelte"
+  import LoginForm from "./LoginForm.svelte";
   import "./style.css";
 
-  const [logedIn, setLogedIn] = useState(false)
+  const [logedIn, setLogedIn] = useState(false);
 
   web3.subscribe(async (_web3) => {
     const web3 = await _web3;
@@ -22,16 +22,16 @@
   });
 
   const run = async () => {
-    let userObj = await user.get()
+    let userObj = await user.get();
 
-    if(userObj){
-      setLogedIn(true)
+    if (userObj) {
+      setLogedIn(true);
     }
-  }
-  
+  };
+
   useEffect(() => {
-    run()
-	});
+    run();
+  });
 
   firebase.onUserChanged((currentUser) => {
     user.update(($user) => {
@@ -60,8 +60,8 @@
           </h8>
         </div>
       </div>
-      {#if !logedIn}
-        <LoginForm/>
+      {#if !$logedIn}
+        <LoginForm />
       {/if}
     </div>
   </div>

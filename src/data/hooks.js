@@ -1,4 +1,4 @@
-import {writable,derived} from 'svelte/store';
+import {writable, derived} from 'svelte/store';
 import {afterUpdate, onDestroy} from 'svelte';
 
 export function useState(initialState) {

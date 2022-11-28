@@ -960,18 +960,18 @@
   resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-common/0.1.22/d877dec531019d15dc8422fcdaa17dbead0a437d#d877dec531019d15dc8422fcdaa17dbead0a437d"
   integrity sha512-TH07ZXxcJYUYig29fRc2bfxELbXlxNWtjZUlWA1sk4KyqA/teekVCQZgHLomFbGpRNkVJUIbI7yujtt7HGITGQ==
 
-"@ticketland-io/eutopic-core@0.1.22":
-  version "0.1.22"
-  resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-core/0.1.22/456af24ca9d20ae697cdb5c5843f01e4d601ae95#456af24ca9d20ae697cdb5c5843f01e4d601ae95"
-  integrity sha512-T6ERzOQ/RryTODt6T6HvIsWT5tiOQsLf4gCDPzTgeV3NL7+C2isK5PFb4y7TeCyQaWDN39pt9Mm87d1jaUKLDQ==
+"@ticketland-io/eutopic-core@0.1.23":
+  version "0.1.23"
+  resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-core/0.1.23/16d423f3b54bec8521ad5a1e25a5fe9280189f40#16d423f3b54bec8521ad5a1e25a5fe9280189f40"
+  integrity sha512-CaxTY3W+xTQkomgBSDaeYcaBQVrf3OUoKo0yD9bmZqg+EV1Gd6EjgYk8aIlYZD+IrmQJ8Giwo6NYo56BT1L79g==
   dependencies:
     "@ppoliani/im-record" "^2.0.0"
     "@ticketland-io/eutopic-common" "^0.1.13"
 
-"@ticketland-io/eutopic-firebase-auth@0.1.22":
-  version "0.1.22"
-  resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-firebase-auth/0.1.22/04a5677efc07bd506c36d681574131c97c96c798#04a5677efc07bd506c36d681574131c97c96c798"
-  integrity sha512-PA0SC1jXlq9oJ9ipr6N3GX0UQdbJG4H4Z0uln2zzY+q1HVMVkQ8r1Gfasj35Zvj8UVyPB51GBE957Dh/mwAuYw==
+"@ticketland-io/eutopic-firebase-auth@0.1.23":
+  version "0.1.23"
+  resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-firebase-auth/0.1.23/e213b1ba739762453ef5dd61dea64f7a946ef849#e213b1ba739762453ef5dd61dea64f7a946ef849"
+  integrity sha512-kpQHG3RN2BQOT8SVyZRI0n38u2gZlAwcDMOvnqnaxiTEwiDoE+Oi2aKDvRhyQFOWEevK1dUl/Tfk78xAKAKrIw==
   dependencies:
     "@ppoliani/im-record" "^2.0.0"
     firebase "^9.9.1"

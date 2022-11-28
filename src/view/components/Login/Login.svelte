@@ -1,6 +1,6 @@
 <script>
-  import { web3, user, firebase } from "../../../data/store";
-  import { useState, useEffect } from "../../../data/hooks";
+  import {web3, user, firebase} from "../../../data/store";
+  import {useState, useEffect} from "../../../data/hooks";
   import LoginForm from "./LoginForm.svelte";
   import "./style.css";
 

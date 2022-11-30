@@ -1,10 +1,10 @@
 <script>
-  import { web3, user, firebase, qs, account } from "../../../data/store";
-  import { useState, useEffect } from "../../../data/hooks";
   import {get} from 'svelte/store'
+  import {web3, user, firebase, qs, account} from '../../../data/store';
+  import {useState, useEffect} from '../../../data/hooks';
   import {verify} from '../../../services/verify-ticket'
   import {normalizeEventId} from '../../../services/ticket'
-  import "./styles.css";
+  import './styles.css';
 
   export let eventName
   export let seatName
@@ -38,7 +38,7 @@
   </div>
   <div class='container'>
     <div class='container detailsDate'>
-      <img height={'15px'} src='assets/calendarIcon.png' />
+      <img height={'15px'} src='assets/calendarIcon.png' alt='calendarIcon'/>
       <div class='infoText'>
        {startDate}
       </div>

@@ -3,7 +3,6 @@
 .shadow {
   width: 280px;
   z-index: 100000;
-
   border: 1px solid;
   box-shadow: 5px 10px;
   border-radius: 24px;

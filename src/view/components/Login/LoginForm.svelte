@@ -6,8 +6,10 @@
     try {
       if(provider === 'google'){
         await firebase.signInWithGoogle();
-      }else{
+      }else if(provider === 'facebook'){
         await firebase.signInWithFacebook();
+      }else{
+        await firebase.signInWithTwitter();
       }
     } catch (error) {
       console.log('>>>>>>>>>', error);
@@ -23,14 +25,19 @@
     </div>
   </div>
   <div class='container iconContainer'>
-    <div class='container firstIconItem'>
+    <div class='container iconItem'>
       <button class='iconButton' on:click={async()=>{await login('google')}}>
         <img src='assets/googleIcon.png' alt='googleIcon'/>
       </button>
     </div>
-    <div class='container secondIconItem'>
+    <div class='container iconItem'>
       <button class='iconButton' on:click={async()=>{await login('facebook')}}>
         <img src='assets/facebookIcon.png' alt='facebookIcon'/>
+      </button>
+    </div>
+    <div class='container iconItem'>
+      <button class='iconButton' on:click={async()=>{await login('twitter')}}>
+        <img src='assets/twitterIcon.png' alt='twitterIcon'/>
       </button>
     </div>
   </div>

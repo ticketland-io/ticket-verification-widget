@@ -60,22 +60,9 @@
 
 .iconContainer {
   flex-basis: 100%;
+  justify-content: center;
 }
 
-.firstIconItem {
-  justify-content: end;
-  flex-basis: 50%;
-}
-
-.secondIconItem {
-  justify-content: start;
-  flex-basis: 50%;
-}
-
-.google{
-  margin-right:10px;
-}
-
-.facebook{
-  margin-left:10px;
+.iconItem {
+  flex-basis: 0;
 }

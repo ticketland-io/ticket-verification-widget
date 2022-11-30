@@ -1,5 +1,5 @@
 <script>
-  import {web3, user, firebase} from '../../data/store'
+  import {web3, user, firebase} from '../../../data/store'
   
   web3.subscribe(async _web3 => {
     const web3 = await _web3

@@ -1,8 +1,6 @@
 <script>
-  import { web3, user, firebase } from "../../../data/store";
-  import { useState, useEffect } from "../../../data/hooks";
+  import {firebase} from "../../../data/store";
   import "./styles.css";
-
 
   const login = async (provider) => {
     try {
@@ -26,13 +24,13 @@
   </div>
   <div class='container iconContainer'>
     <div class='container firstIconItem'>
-      <button class='button' on:click={async()=>{await login('google')}}>
-        <img src="assets/googleIcon.png" />
+      <button class='iconButton' on:click={async()=>{await login('google')}}>
+        <img src="assets/googleIcon.png" alt='googleIcon'/>
       </button>
     </div>
     <div class='container secondIconItem'>
-      <button class='button' on:click={async()=>{await login('facebook')}}>
-        <img src='assets/facebookIcon.png' />
+      <button class='iconButton' on:click={async()=>{await login('facebook')}}>
+        <img src='assets/facebookIcon.png' alt='facebookIcon'/>
       </button>
     </div>
   </div>

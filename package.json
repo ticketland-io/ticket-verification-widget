@@ -18,6 +18,7 @@
     "assert": "^2.0.0",
     "borsh": "^0.7.0",
     "bs58": "^5.0.0",
+    "date-fns": "^2.29.3",
     "svelte": "^3.49.0",
     "svelte-asyncable": "^2.1.0"
   },

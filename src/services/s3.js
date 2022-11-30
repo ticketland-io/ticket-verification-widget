@@ -1,4 +1,4 @@
-import fetch from './api'
+import fetch, {createBearerHeader} from './api'
 
 export const createS3Url = (eventId, file) => `${process.env.S3_URL}/${eventId}-${file}`
 
@@ -11,10 +11,16 @@ export const fetchMetadata = async (eventId) => {
   )
 }
 
-// TODO: read the file type from the Event object instead of using the hardcoded jpeg
-export const fetchEventImage = async eventId => {
+export const fetchEvent = async (firebase, eventId) => {
   return await fetch(
-    createS3Url(eventId, 'ticket_image.jpeg'),
-    'GET'
+    `${process.env.TICKETLAND_API}/events/${eventId}`,
+    'GET',
+    {
+      headers: createBearerHeader(await firebase.accessToken())
+    }
   )
+}
+
+export const get_event_ticket_image_path = (eventId, fileType) => {
+  return `https://ticketland-metadata.s3.eu-central-1.amazonaws.com/${eventId}-ticket_image.${fileType}`
 }

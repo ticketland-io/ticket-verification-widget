@@ -2,7 +2,7 @@
   import {web3, user, firebase} from "../../../data/store";
   import {useState, useEffect} from "../../../data/hooks";
   import LoginForm from "./LoginForm.svelte";
-  import "./style.css";
+  import "./styles.css";
 
   const [logedIn, setLogedIn] = useState(false);
 
@@ -22,6 +22,7 @@
   });
 
   const run = async () => {
+    // await firebase.signOutUser()
     let userObj = await user.get();
 
     if (userObj) {

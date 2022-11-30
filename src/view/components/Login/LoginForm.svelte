@@ -1,7 +1,7 @@
 <script>
   import { web3, user, firebase } from "../../../data/store";
   import { useState, useEffect } from "../../../data/hooks";
-  import "./style.css";
+  import "./styles.css";
 
 
   const login = async (provider) => {

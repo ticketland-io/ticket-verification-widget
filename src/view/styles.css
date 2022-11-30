@@ -1,7 +1,4 @@
 main {
-  /* text-align: center; */
-  /* padding: 1em; */
-  /* max-width: 240px; */
   margin: 0 auto;
 }
 
@@ -91,8 +88,6 @@ h2 {
   -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
-  -moz-appearance: none;
-  -webkit-appearance: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   color: inherit;
@@ -137,8 +132,6 @@ h2 {
   -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
-  -moz-appearance: none;
-  -webkit-appearance: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   color: inherit;

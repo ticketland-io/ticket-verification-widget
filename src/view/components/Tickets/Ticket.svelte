@@ -1,10 +1,10 @@
 <script>
   import {onMount} from 'svelte'
   import {get} from 'svelte/store'
-  import {fetchMetadata} from '../../services/s3'
-  import {verify} from '../../services/verify-ticket'
-  import {normalizeEventId} from '../../services/ticket'
-  import {web3, qs, account} from '../../data/store'
+  import {fetchMetadata} from '../../../services/s3'
+  import {verify} from '../../../services/verify-ticket'
+  import {normalizeEventId} from '../../../services/ticket'
+  import {web3, qs, account} from '../../../data/store'
   
   export let ticket
   let nftMetadata

@@ -1,0 +1,65 @@
+@import "../../../core/style.css";
+
+.shadow {
+  width: 280px;
+  z-index: 100000;
+
+  border: 1px solid;
+  box-shadow: 5px 10px;
+  border-radius: 24px;
+  overflow: hidden;
+  margin: auto;
+  margin-bottom: 20px;
+  border-color: var(--yellow500);
+  background-color: var(--white)
+}
+
+.carouselEventContainerFront {
+  position: relative;
+  padding: 8px;
+}
+
+.imageEvent {
+  border-radius: 16px 16px 3px 3px;
+}
+
+.cardEventInfoContainer {
+  padding: 8px 8px 0px 8px;
+}
+
+.cardName {
+  margin-bottom: 8px;
+}
+
+.priceButton {
+  height: 70%;
+  width: 100%;
+  padding: 10px;
+}
+
+.infoText {
+  margin: 0 0.3rem;
+}
+
+.detailsDate {
+  align-items: center;
+  flex-basis: 60%
+}
+
+.buttonContainer {
+  align-items: center;
+  flex-basis: 40%;
+}
+
+.headerBody {
+  color: var(--gray800);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  flex-basis: 50%;
+}
+
+.seatNum {
+  flex-basis: 50%;
+  justify-content: flex-end;
+}

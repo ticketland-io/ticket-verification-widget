@@ -968,13 +968,14 @@
     "@ppoliani/im-record" "^2.0.0"
     "@ticketland-io/eutopic-common" "^0.1.13"
 
-"@ticketland-io/eutopic-firebase-auth@0.1.23":
-  version "0.1.23"
-  resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-firebase-auth/0.1.23/e213b1ba739762453ef5dd61dea64f7a946ef849#e213b1ba739762453ef5dd61dea64f7a946ef849"
-  integrity sha512-kpQHG3RN2BQOT8SVyZRI0n38u2gZlAwcDMOvnqnaxiTEwiDoE+Oi2aKDvRhyQFOWEevK1dUl/Tfk78xAKAKrIw==
+"@ticketland-io/eutopic-firebase-auth@0.1.25":
+  version "0.1.25"
+  resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-firebase-auth/0.1.25/1ced3858a8549872199f0a051390823ed1c116d9#1ced3858a8549872199f0a051390823ed1c116d9"
+  integrity sha512-ZK0VZkVS8xaZvG2xYohoZNtZ+rH4WOajCyJs1QJ3p9g2wHamyuWYz9JJFKhkZ1Gr2FoB29OW1s+K5hbvgMQRHA==
   dependencies:
     "@ppoliani/im-record" "^2.0.0"
     firebase "^9.9.1"
+    jwt-decode "^3.1.2"
 
 "@ticketland-io/eutopic-indexdb-storage@^0.1.0", "@ticketland-io/eutopic-indexdb-storage@^0.1.13":
   version "0.1.22"
@@ -2155,6 +2156,11 @@ jszip@^3.10.0:
     pako "~1.0.2"
     readable-stream "~2.3.6"
     setimmediate "^1.0.5"
+
+jwt-decode@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-3.1.2.tgz#3fb319f3675a2df0c2895c8f5e9fa4b67b04ed59"
+  integrity sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==
 
 keccak256@^1.0.6:
   version "1.0.6"

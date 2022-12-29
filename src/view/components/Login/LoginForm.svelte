@@ -4,15 +4,20 @@
 
   const login = async (provider) => {
     try {
-      if(provider === 'google'){
-        await firebase.signInWithGoogle();
-      }else if(provider === 'facebook'){
-        await firebase.signInWithFacebook();
-      }else{
-        await firebase.signInWithTwitter();
+      switch (provider) {
+        case 'google':
+          await firebase.signInWithGoogle();
+          break;
+        case 'facebook':
+          await firebase.signInWithFacebook();
+          break;
+        case 'twitter':
+        default:
+          await firebase.signInWithTwitter();
+          break;
       }
     } catch (error) {
-      console.log('>>>>>>>>>', error);
+      //ignore
     }
   };
 

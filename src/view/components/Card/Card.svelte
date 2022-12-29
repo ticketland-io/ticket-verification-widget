@@ -2,7 +2,7 @@
   import {get} from 'svelte/store';
   import {onMount} from 'svelte';
   import {format} from 'date-fns';
-  import {web3, user, qs, firebase} from '../../../data/store';
+  import {qs, firebase} from '../../../data/store';
   import {useState, useEffect} from '../../../data/hooks';
   import {fetchEvent, fetchMetadata, get_event_ticket_image_path} from '../../../services/s3';
   import Details from './Details.svelte';

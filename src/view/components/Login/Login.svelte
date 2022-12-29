@@ -24,13 +24,6 @@
       userLoggedIn = true;
     }
   });
-
-  firebase.onUserChanged((currentUser) => {
-    user.update(($user) => {
-      $user = currentUser;
-      return $user;
-    });
-  });
 </script>
 
 <div class="root">

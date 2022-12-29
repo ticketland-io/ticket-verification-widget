@@ -18,8 +18,8 @@
   });
 
   const getEvent = async () => {
-    const result = (await fetchEvent(firebase, get(qs).eventId)).result[0]
-    setEvent(result)
+    const {result} = await fetchEvent(firebase, get(qs).eventId)
+    setEvent(result[0])
   }
 
   useEffect(() => {

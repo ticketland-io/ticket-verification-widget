@@ -1,7 +1,6 @@
 <script>
   import {get} from 'svelte/store'
   import {web3, user, firebase, qs, account} from '../../../data/store';
-  import {useState, useEffect} from '../../../data/hooks';
   import {verify} from '../../../services/verify-ticket'
   import {normalizeEventId} from '../../../services/ticket'
   import './styles.css';

@@ -5,7 +5,7 @@
   import "./styles.css";
 
   export let publicKey = "";
-  let userLoggedIn=false
+  let userLoggedIn = false;
 
   web3.subscribe(async (_web3) => {
     const web3 = await _web3;
@@ -16,16 +16,12 @@
   });
 
   firebase.onUserChanged((currentUser) => {
-    user.update(($user) => {
-      $user = currentUser;
-      return $user;
-    });
+    user.update(() => currentUser);
   });
-
 
   afterUpdate(async () => {
     if (await user.get()) {
-      userLoggedIn=true
+      userLoggedIn = true;
     }
   });
 

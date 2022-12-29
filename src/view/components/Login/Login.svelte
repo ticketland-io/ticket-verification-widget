@@ -1,11 +1,11 @@
 <script>
-  import {web3, user, firebase} from '../../../data/store';
-  import {useState, useEffect} from '../../../data/hooks';
-  import LoginForm from './LoginForm.svelte';
-  import './styles.css';
+  import {afterUpdate} from "svelte";
+  import {web3, user, firebase} from "../../../data/store";
+  import LoginForm from "./LoginForm.svelte";
+  import "./styles.css";
 
-  export let publicKey = '';
-  const [logedIn, setLogedIn] = useState(false);
+  export let publicKey = "";
+  let userLoggedIn=false
 
   web3.subscribe(async (_web3) => {
     const web3 = await _web3;
@@ -22,16 +22,11 @@
     });
   });
 
-  const run = async () => {
-    let userObj = await user.get();
 
-    if (userObj) {
-      setLogedIn(true);
+  afterUpdate(async () => {
+    if (await user.get()) {
+      userLoggedIn=true
     }
-  };
-
-  useEffect(() => {
-    run();
   });
 
   firebase.onUserChanged((currentUser) => {
@@ -42,16 +37,16 @@
   });
 </script>
 
-<div class='root'>
-  <div class='backgroundColor' />
-  <div class='container innerContainer'>
-    <div class='container directionContainer'>
-      <div class='item'>
-        <h2 classes='welcomeText'>
+<div class="root">
+  <div class="backgroundColor" />
+  <div class="container innerContainer">
+    <div class="container directionContainer">
+      <div class="item">
+        <h2 classes="welcomeText">
           <strong>WELCOME</strong> BACK!
         </h2>
       </div>
-      <div class='container'>
+      <div class="container">
         <div item xs={12} mt={6}>
           <h8>
             Ticketland is a ticketing and invitation cards platform and
@@ -59,7 +54,7 @@
           </h8>
         </div>
       </div>
-      {#if !$logedIn}
+      {#if !userLoggedIn}
         <LoginForm />
       {/if}
     </div>

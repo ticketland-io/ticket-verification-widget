@@ -13,7 +13,7 @@
 
   const getEvent = async () => {
     const {result} = await fetchEvent(firebase, get(qs).eventId)
-    event=result[0]
+    event = result[0]
   }
 
   onMount(async () => {

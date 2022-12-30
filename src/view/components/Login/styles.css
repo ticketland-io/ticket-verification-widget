@@ -54,6 +54,7 @@
 .socialMediaText {
   font-size: 1rem;
   color: var(--gray400);
+  font-family: 'Poppins';
 }
 
 .iconContainer {

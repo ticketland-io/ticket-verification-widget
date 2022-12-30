@@ -7,6 +7,7 @@ h1 {
   font-size: 76;
   font-weight: 500;
   line-height: 80px;
+  font-family: 'Poppins';
 }
 
 h2 {
@@ -14,6 +15,11 @@ h2 {
   font-size: 40px;
   font-weight: 500;
   line-height: 48px;
+  font-family: 'Poppins';
+}
+
+h8 {
+  font-family: 'Poppins';
 }
 
 @media (min-width: 640px) {

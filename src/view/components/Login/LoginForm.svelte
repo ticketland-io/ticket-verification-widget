@@ -4,7 +4,6 @@
 
   const login = provider => async () => {
     try {
-      console.log(provider)
       switch (provider) {
         case "google":
           await firebase.signInWithGoogle();

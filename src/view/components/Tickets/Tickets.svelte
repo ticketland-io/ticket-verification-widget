@@ -1,8 +1,9 @@
 <script>
   import {get} from 'svelte/store'
-  import Ticket from './Ticket.svelte'
-  import {web3, qs} from '../../data/store'
-  import {fetchTickets} from '../../services/ticket'
+  import {web3, qs} from '../../../data/store'
+  import {fetchTickets} from '../../../services/ticket'
+  import Card from '../Card/Card.svelte';
+  import './styles.css'
 
   export let tickets = []
 
@@ -15,8 +16,8 @@
 
 </script>
 
-<main>
+<main class='root'>
 	{#each tickets as ticket}
-    <Ticket ticket={ticket} />
+    <Card ticket={ticket}/>
   {/each}
 </main>

@@ -11,13 +11,14 @@
   "dependencies": {
     "@apocentre/solana-web3": "Apocentre/solana-web3",
     "@project-serum/anchor": "^0.25.0",
-    "@ticketland-io/eutopic-core": "0.1.22",
-    "@ticketland-io/eutopic-firebase-auth": "0.1.22",
+    "@ticketland-io/eutopic-core": "0.1.23",
+    "@ticketland-io/eutopic-firebase-auth": "0.1.25",
     "@ticketland-io/eutopic-solana-wallet": "0.1.22",
     "@ticketland-io/eutopic-web-enclave": "0.1.22",
     "assert": "^2.0.0",
     "borsh": "^0.7.0",
     "bs58": "^5.0.0",
+    "date-fns": "^2.29.3",
     "svelte": "^3.49.0",
     "svelte-asyncable": "^2.1.0"
   },

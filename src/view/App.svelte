@@ -1,10 +1,10 @@
 <script>
-	import './styles.css'
 	import {onMount} from 'svelte'
-  import Auth from "./components/Auth.svelte"
-	import Tickets from './components/Tickets.svelte'
 	import {initConnection} from '../services/connection'
 	import {connection} from '../data/store'
+	import Login from "./components/Login/Login.svelte"
+	import Tickets from './components/Tickets/Tickets.svelte'
+	import './styles.css'
 
 	onMount(async () => {
 		connection.update($connection => {
@@ -15,6 +15,6 @@
 </script>
 
 <main>
-	<Auth />
-	<Tickets />
+	<Login/>
+	<Tickets/>
 </main>

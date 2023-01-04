@@ -1,11 +1,16 @@
 <script>
-  import {afterUpdate} from "svelte";
-  import {web3, user, firebase} from "../../../data/store";
+  import {afterUpdate } from "svelte";
+  import {web3, user, firebase, originJWT} from "../../../data/store";
   import LoginForm from "./LoginForm.svelte";
   import "./styles.css";
 
-  export let publicKey = "";
+  let publicKey = "";
+  let externalJWT = "";
   let userLoggedIn = false;
+
+  originJWT.subscribe((value) => {
+    externalJWT = value;
+  });
 
   web3.subscribe(async (_web3) => {
     const web3 = await _web3;
@@ -20,7 +25,7 @@
   });
 
   afterUpdate(async () => {
-    if (await user.get()) {
+    if ((await user.get()) || externalJWT.length === 0) {
       userLoggedIn = true;
     }
   });

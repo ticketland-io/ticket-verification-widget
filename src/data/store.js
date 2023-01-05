@@ -38,5 +38,3 @@ export const web3 = asyncable(async($user, $connection) => {
 export const account = asyncable(async($user) => {
   return await eutopicCore.fetchAccount()
 }, undefined, [user])
-
-export const originAccount = writable('')

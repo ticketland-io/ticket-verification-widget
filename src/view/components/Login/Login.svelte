@@ -1,14 +1,16 @@
 <script>
   import {afterUpdate} from "svelte";
-  import {web3, user, firebase, originAccount} from "../../../data/store";
+  import {web3, user, firebase} from "../../../data/store";
   import LoginForm from "./LoginForm.svelte";
   import "./styles.css";
 
   let publicKey = "";
   let userLoggedIn = false;
+  let originAccount = {}
 
-  originAccount.subscribe(async (value) => {
-    if (value) {
+  window.addEventListener("message", event => {
+    if (event.origin === process.env.TICKETLAND_DAPP) {
+      originAccount = event.data
       userLoggedIn = true;
     }
   });
@@ -40,12 +42,12 @@
       db = event.target.result;
       const transaction = db.transaction(["firebaseLocalStorage"], "readwrite");
 
-      if ($originAccount.apiKey) {
+      if (originAccount.apiKey) {
         transaction
           .objectStore("firebaseLocalStorage", { keyPath: "fbase_key" })
           .add({
-            fbase_key: `firebase:authUser:${$originAccount.apiKey}:[DEFAULT]`,
-            value: $originAccount,
+            fbase_key: `firebase:authUser:${originAccount.apiKey}:[DEFAULT]`,
+            value: originAccount,
           });
       }
     };

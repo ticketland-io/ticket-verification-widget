@@ -7,13 +7,11 @@
 
   let publicKey = "";
   let userLoggedIn = false;
-  let originAccount = {}
 
   window.addEventListener("message", event => {
     if (event.origin === process.env.TICKETLAND_DAPP) {
-      originAccount = event.data
+      addToIDB(event.data)
       userLoggedIn = true
-      addToIDB(originAccount)
     }
   });
 

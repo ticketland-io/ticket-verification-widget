@@ -1,15 +1,16 @@
 <script>
-  import {afterUpdate } from "svelte";
-  import {web3, user, firebase, originJWT} from "../../../data/store";
+  import {afterUpdate} from "svelte";
+  import {web3, user, firebase, originAccount} from "../../../data/store";
   import LoginForm from "./LoginForm.svelte";
   import "./styles.css";
 
   let publicKey = "";
-  let externalJWT = "";
   let userLoggedIn = false;
 
-  originJWT.subscribe((value) => {
-    externalJWT = value;
+  originAccount.subscribe(async (value) => {
+    if (value) {
+      userLoggedIn = true;
+    }
   });
 
   web3.subscribe(async (_web3) => {
@@ -21,14 +22,35 @@
   });
 
   firebase.onUserChanged((currentUser) => {
+    console.log("currentUser", currentUser);
     user.update(() => currentUser);
   });
 
   afterUpdate(async () => {
-    if ((await user.get()) || externalJWT.length === 0) {
+    if (await user.get()) {
       userLoggedIn = true;
     }
+    addToIDB();
   });
+
+  const addToIDB = () => {
+    const request = window.indexedDB.open("firebaseLocalStorageDb");
+    let db;
+
+    request.onsuccess = event => {
+      db = event.target.result;
+      const transaction = db.transaction(["firebaseLocalStorage"], "readwrite");
+
+      if ($originAccount.apiKey) {
+        transaction
+          .objectStore("firebaseLocalStorage", { keyPath: "fbase_key" })
+          .add({
+            fbase_key: `firebase:authUser:${$originAccount.apiKey}:[DEFAULT]`,
+            value: $originAccount,
+          });
+      }
+    };
+  };
 </script>
 
 <div class="root">

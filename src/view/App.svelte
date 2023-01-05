@@ -1,14 +1,14 @@
 <script>
   import {onMount} from "svelte";
   import {initConnection} from "../services/connection";
-  import {connection, originJWT} from "../data/store";
+  import {connection, originAccount} from "../data/store";
   import Login from "./components/Login/Login.svelte";
   import Tickets from "./components/Tickets/Tickets.svelte";
   import "./styles.css";
 
-  window.addEventListener("message", (event) => {
+  window.addEventListener("message", event => {
     if (event.origin === process.env.MAIN_DAPP_ORIGIN) {
-      originJWT.set(event.data);
+      originAccount.set(event.data);
     }
   });
 

@@ -22,7 +22,6 @@
   });
 
   firebase.onUserChanged((currentUser) => {
-    console.log("currentUser", currentUser);
     user.update(() => currentUser);
   });
 

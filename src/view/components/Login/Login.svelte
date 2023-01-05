@@ -28,7 +28,7 @@
   });
 
   afterUpdate(async () => {
-    if (await user.get()) {
+    if (await $user) {
       userLoggedIn = true;
     }
   });

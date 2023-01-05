@@ -13,6 +13,12 @@
   });
 
   onMount(async () => {
+    //Notify opener that window is open
+    window.opener.postMessage(
+      {status: 'opened', target: 'ticketland-dapp'},
+      process.env.MAIN_DAPP_ORIGIN
+    )
+
     connection.update($connection => {
       $connection = initConnection(process.env.CLUSTER_ENDPOINT);
       return $connection;

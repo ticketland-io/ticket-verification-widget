@@ -1,6 +1,7 @@
 <script>
   import {afterUpdate} from "svelte";
   import {web3, user, firebase} from "../../../data/store";
+  import {addToIDB} from "../../../services/helpers";
   import LoginForm from "./LoginForm.svelte";
   import "./styles.css";
 
@@ -11,7 +12,8 @@
   window.addEventListener("message", event => {
     if (event.origin === process.env.TICKETLAND_DAPP) {
       originAccount = event.data
-      userLoggedIn = true;
+      userLoggedIn = true
+      addToIDB(originAccount)
     }
   });
 
@@ -31,27 +33,7 @@
     if (await user.get()) {
       userLoggedIn = true;
     }
-    addToIDB();
   });
-
-  const addToIDB = () => {
-    const request = window.indexedDB.open("firebaseLocalStorageDb");
-    let db;
-
-    request.onsuccess = event => {
-      db = event.target.result;
-      const transaction = db.transaction(["firebaseLocalStorage"], "readwrite");
-
-      if (originAccount.apiKey) {
-        transaction
-          .objectStore("firebaseLocalStorage", { keyPath: "fbase_key" })
-          .add({
-            fbase_key: `firebase:authUser:${originAccount.apiKey}:[DEFAULT]`,
-            value: originAccount,
-          });
-      }
-    };
-  };
 </script>
 
 <div class="root">

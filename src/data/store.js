@@ -39,4 +39,4 @@ export const account = asyncable(async($user) => {
   return await eutopicCore.fetchAccount()
 }, undefined, [user])
 
-export const originJWT = writable('')
+export const originAccount = writable('')

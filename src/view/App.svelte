@@ -7,7 +7,7 @@
   import "./styles.css";
 
   window.addEventListener("message", event => {
-    if (event.origin === process.env.MAIN_DAPP_ORIGIN) {
+    if (event.origin === process.env.TICKETLAND_DAPP) {
       originAccount.set(event.data);
     }
   });
@@ -16,7 +16,7 @@
     //Notify opener that window is open
     window.opener.postMessage(
       {status: 'opened', target: 'ticketland-dapp'},
-      process.env.MAIN_DAPP_ORIGIN
+      process.env.TICKETLAND_DAPP
     )
 
     connection.update($connection => {

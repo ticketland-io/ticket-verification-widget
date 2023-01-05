@@ -8,7 +8,7 @@
 
   onMount(async () => {
     //Notify opener that window is open
-    window.opener.postMessage(
+    window.opener?.postMessage(
       {status: 'opened', target: 'ticketland-dapp'},
       process.env.TICKETLAND_DAPP
     )

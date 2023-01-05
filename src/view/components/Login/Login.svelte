@@ -9,7 +9,7 @@
   let userLoggedIn = false;
 
   window.addEventListener("message", event => {
-    if (event.origin === process.env.TICKETLAND_DAPP) {
+    if (event.origin === process.env.TICKETLAND_DAPP && event.data) {
       addToIDB(event.data)
       userLoggedIn = true
     }

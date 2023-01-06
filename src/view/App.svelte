@@ -7,10 +7,10 @@
   import "./styles.css";
 
   onMount(async () => {
-    //Notify opener that window is open
-    window.opener?.postMessage(
+    // Notify opener that window is open
+    window.opener.postMessage(
       {status: 'opened', target: 'ticketland-dapp'},
-      process.env.TICKETLAND_DAPP
+      '*'
     )
 
     connection.update($connection => {

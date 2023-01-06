@@ -1,13 +1,12 @@
 @import "../../../core/style.css";
 
 .shadow {
-  width: 280px;
   z-index: 100000;
   border: 1px solid;
   box-shadow: 5px 10px;
   border-radius: 24px;
   overflow: hidden;
-  margin: auto;
+  margin: 24px 15%;
   margin-bottom: 20px;
   border-color: var(--yellow500);
   background-color: var(--white)

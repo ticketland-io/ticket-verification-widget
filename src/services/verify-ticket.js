@@ -20,7 +20,7 @@ const VerifyTicketMsgType = {
   ]
 }
 
-export const verify = async (web3, eventId, codeChallenge, ticketMetadata, ticketOwnerPubkey, targetOrigin) => {
+export const verify = async (web3, eventId, codeChallenge, ticketMetadata, ticketNft, ticketOwnerPubkey, targetOrigin) => {
   const msg = new VerifyTicketMsg(eventId, codeChallenge, ticketMetadata)
   const schema = new Map([[VerifyTicketMsg, VerifyTicketMsgType]]);
 
@@ -29,6 +29,7 @@ export const verify = async (web3, eventId, codeChallenge, ticketMetadata, ticke
 
   const response = await verifyTicket(
     ticketMetadata,
+    ticketNft,
     eventId,
     codeChallenge,
     ticketOwnerPubkey, 

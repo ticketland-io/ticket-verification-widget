@@ -1,11 +1,19 @@
 <script>
   import {afterUpdate} from "svelte";
   import {web3, user, firebase} from "../../../data/store";
+  import {addToIDB} from "../../../services/helpers";
   import LoginForm from "./LoginForm.svelte";
   import "./styles.css";
 
-  export let publicKey = "";
+  let publicKey = "";
   let userLoggedIn = false;
+
+  window.addEventListener("message", event => {
+    if (Boolean(event.data.user) && event.data.target === 'ticketland-auth') {
+      addToIDB(event.data.user)
+      userLoggedIn = true
+    }
+  });
 
   web3.subscribe(async (_web3) => {
     const web3 = await _web3;
@@ -20,7 +28,7 @@
   });
 
   afterUpdate(async () => {
-    if (await user.get()) {
+    if (await $user) {
       userLoggedIn = true;
     }
   });

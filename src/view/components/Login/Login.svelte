@@ -9,7 +9,7 @@
   let userLoggedIn = false;
 
   window.addEventListener("message", event => {
-    if (Boolean(event.data.user) && event.data.target === 'ticketland-firebase-user') {
+    if (Boolean(event.data.user) && event.data.target === 'ticketland-auth') {
       addToIDB(event.data.user)
       userLoggedIn = true
     }

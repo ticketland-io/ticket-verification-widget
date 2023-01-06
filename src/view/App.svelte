@@ -8,12 +8,14 @@
 
   onMount(async () => {
     // Notify opener that window is open
-    window.opener.postMessage(
-      {status: 'opened', target: 'ticketland-auth'},
-      '*'
-    )
+    if (window.opener) {
+      window.opener.postMessage(
+        {status: "opened", target: "ticketland-auth"},
+        "*"
+      );
+    }
 
-    connection.update($connection => {
+    connection.update(($connection) => {
       $connection = initConnection(process.env.CLUSTER_ENDPOINT);
       return $connection;
     });

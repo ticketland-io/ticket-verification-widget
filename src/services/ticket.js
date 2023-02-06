@@ -13,7 +13,7 @@ export const fetchTickets = async (eventId) => {
 
 export const verifyTicket = async (ticketMetadata, ticketNft, eventId, codeChallenge, ticketOwnerPubkey, sig) => {
   return await fetch(
-    `${process.env.TICKETLAND_API}/tickets/${ticketMetadata}/verifications`,
+    `${process.env.TICKETLAND_API}/tickets/${ticketNft}/verifications`,
     'POST',
     {
       body: {

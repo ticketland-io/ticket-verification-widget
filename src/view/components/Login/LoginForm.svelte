@@ -5,16 +5,23 @@
   const login = provider => async () => {
     try {
       switch (provider) {
-        case "google":
+        case "google": {
           await firebase.signInWithGoogle();
           break;
-        case "facebook":
-          await firebase.signInWithFacebook();
-          break;
-        case "twitter":
-        default:
+        }
+        case "twitter": {
           await firebase.signInWithTwitter();
           break;
+        }
+        case "apple": {
+          await firebase.signInWithApple();
+          break;
+        }
+        case "facebook":
+        default: {
+          await firebase.signInWithFacebook();
+          break;
+        }
       }
     } catch (error) {
       //ignore

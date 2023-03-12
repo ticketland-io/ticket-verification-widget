@@ -39,18 +39,18 @@
   </div>
   <div class="container iconContainer">
     <div class="container iconItem">
-      <button class="iconButton" on:click={login("google")} >
-        <img src="assets/googleIcon.png" alt="googleIcon" />
+      <button class="iconButton" on:click={login("google")}>
+        <img src="assets/googleIcon.png" alt="googleIcon" width={"50px"} />
       </button>
     </div>
     <div class="container iconItem">
       <button class="iconButton" on:click={login("facebook")}>
-        <img src="assets/facebookIcon.png" alt="facebookIcon" />
+        <img src="assets/facebookIcon.png" alt="facebookIcon" width={"50px"} />
       </button>
     </div>
     <div class="container iconItem">
       <button class="iconButton" on:click={login("twitter")}>
-        <img src="assets/twitterIcon.png" alt="twitterIcon" />
+        <img src="assets/twitterIcon.png" alt="twitterIcon" width={"50px"} />
       </button>
     </div>
     {#if isMac()}

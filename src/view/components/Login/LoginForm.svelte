@@ -53,5 +53,12 @@
         <img src="assets/twitterIcon.png" alt="twitterIcon" />
       </button>
     </div>
+    {#if isMac()}
+      <div class="container iconItem">
+        <button class="iconButton" on:click={login("apple")}>
+          <img src="assets/appleIcon.png" alt="appleIcon" width={"50px"} />
+        </button>
+      </div>
+    {/if}
   </div>
 </div>

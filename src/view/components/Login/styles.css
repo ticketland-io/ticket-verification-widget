@@ -64,3 +64,9 @@
 .iconItem {
   flex-basis: 0;
 }
+
+.providerErrorText {
+  font-size: 1rem;
+  color: var(--error);
+  font-family: 'Poppins';
+}

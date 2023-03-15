@@ -968,10 +968,10 @@
     "@ppoliani/im-record" "^2.0.0"
     "@ticketland-io/eutopic-common" "^0.1.13"
 
-"@ticketland-io/eutopic-firebase-auth@0.1.25":
-  version "0.1.25"
-  resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-firebase-auth/0.1.25/1ced3858a8549872199f0a051390823ed1c116d9#1ced3858a8549872199f0a051390823ed1c116d9"
-  integrity sha512-ZK0VZkVS8xaZvG2xYohoZNtZ+rH4WOajCyJs1QJ3p9g2wHamyuWYz9JJFKhkZ1Gr2FoB29OW1s+K5hbvgMQRHA==
+"@ticketland-io/eutopic-firebase-auth@0.1.26":
+  version "0.1.26"
+  resolved "https://npm.pkg.github.com/download/@ticketland-io/eutopic-firebase-auth/0.1.26/fcee9cf022da071e805208cabe1177985dbda38d#fcee9cf022da071e805208cabe1177985dbda38d"
+  integrity sha512-aaNp5B2XUiTiRfqduAbNYoRhxnxogKOGiUKaIvqdk9yCWwqepHQ6BCp38hCV98BSfrWGJHaAkfFZHydZay2i9Q==
   dependencies:
     "@ppoliani/im-record" "^2.0.0"
     firebase "^9.9.1"

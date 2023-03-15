@@ -50,23 +50,23 @@
   <div class="container iconContainer">
     <div class="container iconItem">
       <button class="iconButton" on:click={login("google")}>
-        <img src="assets/googleIcon.png" alt="googleIcon" width={"50px"} />
+        <img src="assets/googleIcon.svg" alt="googleIcon" width={"50px"} />
       </button>
     </div>
     <div class="container iconItem">
       <button class="iconButton" on:click={login("facebook")}>
-        <img src="assets/facebookIcon.png" alt="facebookIcon" width={"50px"} />
+        <img src="assets/facebookIcon.svg" alt="facebookIcon" width={"50px"} />
       </button>
     </div>
     <div class="container iconItem">
       <button class="iconButton" on:click={login("twitter")}>
-        <img src="assets/twitterIcon.png" alt="twitterIcon" width={"50px"} />
+        <img src="assets/twitterIcon.svg" alt="twitterIcon" width={"50px"} />
       </button>
     </div>
-    {#if isMac()}
+    {#if isMac}
       <div class="container iconItem">
         <button class="iconButton" on:click={login("apple")}>
-          <img src="assets/appleIcon.png" alt="appleIcon" width={"50px"} />
+          <img src="assets/appleIcon.svg" alt="appleIcon" width={"50px"} />
         </button>
       </div>
     {/if}

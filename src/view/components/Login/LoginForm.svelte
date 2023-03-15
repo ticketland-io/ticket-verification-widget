@@ -33,7 +33,7 @@
     }
   };
 
-  const isMac = () => window.navigator.userAgent.indexOf("Mac") !== -1;
+  const isMac = window.navigator.userAgent.indexOf("Mac") !== -1;
 </script>
 
 <div class="container loginForm">

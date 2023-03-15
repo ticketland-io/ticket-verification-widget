@@ -2,6 +2,8 @@
   import {firebase} from "../../../data/store";
   import "./styles.css";
 
+  let providerError = false;
+
   const login = provider => async () => {
     try {
       switch (provider) {
@@ -24,6 +26,9 @@
         }
       }
     } catch (error) {
+      if (error.code === 'auth/account-exists-with-different-credential') {
+        providerError = true
+      }
       //ignore
     }
   };
@@ -37,6 +42,11 @@
       Sign in with social media
     </div>
   </div>
+  {#if providerError}
+    <div class="providerErrorText">
+      User already registered with different provider
+    </div>
+  {/if}
   <div class="container iconContainer">
     <div class="container iconItem">
       <button class="iconButton" on:click={login("google")}>

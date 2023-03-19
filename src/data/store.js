@@ -1,19 +1,29 @@
 import {asyncable} from 'svelte-asyncable'
 import {writable} from 'svelte/store'
 import Web3 from '@apocentre/solana-web3'
-import EutopicCore from '@ticketland-io/eutopic-core'
-import EutopicSolanaWallet from '@ticketland-io/eutopic-solana-wallet'
-import Enclave from '@ticketland-io/eutopic-web-enclave'
-import FirebaseAuth from '@ticketland-io/eutopic-firebase-auth'
+import {WalletCore, constants} from '@ticketland-io/wallet-core'
+import SolanaWallet from '@ticketland-io/solana-wallet'
+import Enclave from '@ticketland-io/web-enclave'
+import FirebaseAuth from '@ticketland-io/firebase-auth'
 
-const Wallet = () => EutopicSolanaWallet({enclave: Enclave()})
-export const eutopicCore = EutopicCore({Wallet})
-export const firebase = FirebaseAuth()
+const Wallet = () => SolanaWallet({enclave: Enclave()})
+const walletCore = WalletCore({Wallet})
+const firebase = FirebaseAuth()
 
-eutopicCore.init(
-  process.env.VAULT,
+const web3AuthConfig = {
+  clientId: process.env.WEB3_AUTH_CLIENT_ID,
+  verifier: process.env.WEB3_AUTH_VERIFIER,
+  chainId: process.env.CHAIN_ID,
+  chainNamespace: constants.CHAIN_NAMESPACES.SOLANA,
+  rpcTarget: process.env.CLUSTER_ENDPOINT,
+  web3AuthNetwork: process.env.WEB_AUTH_NETWORK,
+  domain: process.env.DAPP_DOMAIN,
+}
+
+walletCore.init(
   process.env.EUTOPIC_API,
-  firebase
+  firebase,
+  web3AuthConfig,
 )
 
 const urlSearchParams = new URLSearchParams(window.location.search)
@@ -28,7 +38,7 @@ export const web3 = asyncable(async($user, $connection) => {
 
   if(user && connection) {
     const web3 = Web3()
-    const custodyWallet = await eutopicCore.bootstrap(user)
+    const custodyWallet = await state.walletCore.bootstrap()
     await web3.init(connection, custodyWallet)
 
     return web3
@@ -36,5 +46,5 @@ export const web3 = asyncable(async($user, $connection) => {
 }, undefined, [user, connection])
 
 export const account = asyncable(async($user) => {
-  return await eutopicCore.fetchAccount()
+  return await walletCore.fetchAccount()
 }, undefined, [user])

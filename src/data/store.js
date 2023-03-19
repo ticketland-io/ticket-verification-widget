@@ -46,5 +46,5 @@ export const web3 = asyncable(async($user, $connection) => {
 }, undefined, [user, connection])
 
 export const account = asyncable(async($user) => {
-  return await eutopicCore.fetchAccount()
+  return await walletCore.fetchAccount()
 }, undefined, [user])

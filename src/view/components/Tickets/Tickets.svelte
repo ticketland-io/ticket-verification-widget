@@ -9,24 +9,31 @@
   export let tickets = [];
   export let event = {};
   export let nftMetadata = {};
+  const eventId = get(qs).eventId;
+  console.log(`🚀 ~ eventId:`, eventId);
 
   web3.subscribe(async ($web3) => {
-    if (await $web3) {
-      const _qs = get(qs);
+    if (await $web3 && eventId) {
 
-      const eventResponse = await fetchEvent(firebase, get(qs).eventId);
+      const eventResponse = await fetchEvent(firebase, eventId);
       event = eventResponse.result[0];
 
-      nftMetadata = await fetchMetadata(_qs.eventId);
+      nftMetadata = await fetchMetadata(eventId);
 
-      const response = await fetchTickets(get(qs).eventId);
+      const response = await fetchTickets(eventId);
       tickets = response.result;
     }
   });
 </script>
 
 <main class="root">
-  {#each tickets as ticket}
-    <Card {ticket} {event} {nftMetadata} />
-  {/each}
+  {#if eventId}
+    {#each tickets as ticket}
+      <Card {ticket} {event} {nftMetadata} />
+    {/each}
+  {:else}
+    <p class='emptyMessage'>
+      Nothing to show
+    </p>
+  {/if}
 </main>

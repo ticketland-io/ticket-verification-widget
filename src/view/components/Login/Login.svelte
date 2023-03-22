@@ -7,11 +7,13 @@
 
   let publicKey = "";
   let userLoggedIn = false;
+  let loading = true;
 
   window.addEventListener("message", event => {
     if (Boolean(event.data.user) && event.data.target === 'ticketland-auth') {
       addToIDB(event.data.user)
       userLoggedIn = true
+      loading = false
     }
   });
 
@@ -24,6 +26,7 @@
   });
 
   firebase.onUserChanged((currentUser) => {
+    loading = false
     user.update(() => currentUser);
   });
 
@@ -34,26 +37,12 @@
   });
 </script>
 
-<div class="root">
-  <div class="backgroundColor" />
-  <div class="container innerContainer">
-    <div class="container directionContainer">
-      <div class="item">
-        <h2 classes="welcomeText">
-          <strong>WELCOME</strong> BACK!
-        </h2>
-      </div>
-      <div class="container">
-        <div item xs={12} mt={6}>
-          <h8>
-            Ticketland is a ticketing and invitation cards platform and
-            infrastructure powered by blockchain and NFT technologies.
-          </h8>
-        </div>
-      </div>
-      {#if !userLoggedIn}
+{#if !loading && !userLoggedIn}
+  <div class="root">
+    <div class="container innerContainer">
+      <div class="container directionContainer">
         <LoginForm />
-      {/if}
+      </div>
     </div>
   </div>
-</div>
+{/if}

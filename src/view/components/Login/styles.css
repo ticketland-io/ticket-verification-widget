@@ -1,22 +1,15 @@
-@import "../../../core/style.css";
-
 .root {
   position: relative;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.backgroundColor {
-  background-color: var(--yellow100);
-  position: absolute;
-  top: -79px;
-  left: 0;
-  width: 100%;
-  height: 592px;
-}
 
 .innerContainer {
   max-width: 1224px;
-  margin: auto;
   z-index: 1;
   position: relative;
   justify-content: center;
@@ -25,10 +18,6 @@
 
 .directionContainer {
   flex-direction: column;
-}
-
-.welcomeText {
-  margin-top: '5.5rem';
 }
 
 .loginForm {
@@ -53,7 +42,7 @@
 .socialMediaText {
   font-size: 1rem;
   color: var(--gray400);
-  font-family: 'Poppins';
+  font-family: 'Comfortaa';
 }
 
 .iconContainer {
@@ -68,5 +57,5 @@
 .providerErrorText {
   font-size: 1rem;
   color: var(--error);
-  font-family: 'Poppins';
+  font-family: 'Comfortaa';
 }

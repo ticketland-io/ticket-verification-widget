@@ -23,6 +23,15 @@
 </script>
 
 <main>
+  <div class="backgroundColor" />
+  <div class="titleContainer">
+    <h1 class="title">
+      Ticketland Verification
+    </h1>
+    <p class="description">
+      Verify your tickets for online events. Just click verify on your ticket and you're done!
+    </p>
+  </div>
   <Login />
   <Tickets />
 </main>

@@ -1,5 +1,3 @@
-@import "../../../core/style.css";
-
-.root {
-  z-index: 1;
+.emptyMessage {
+  font-size: 32px;
 }

@@ -8,7 +8,7 @@ import FirebaseAuth from '@ticketland-io/firebase-auth'
 
 const Wallet = () => SolanaWallet({enclave: Enclave()})
 const walletCore = WalletCore({Wallet})
-const firebase = FirebaseAuth()
+export const firebase = FirebaseAuth()
 
 const web3AuthConfig = {
   clientId: process.env.WEB3_AUTH_CLIENT_ID,
@@ -32,13 +32,13 @@ export const qs = writable(Object.fromEntries(urlSearchParams.entries()))
 export const user = asyncable(() => null)
 export const connection = asyncable(() => null)
 
-export const web3 = asyncable(async($user, $connection) => {
+export const web3 = asyncable(async ($user, $connection) => {
   const user = await $user
   const connection = await $connection
 
   if(user && connection) {
     const web3 = Web3()
-    const custodyWallet = await state.walletCore.bootstrap()
+    const custodyWallet = await walletCore.bootstrap()
     await web3.init(connection, custodyWallet)
 
     return web3

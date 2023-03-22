@@ -6,10 +6,16 @@ import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 import json from '@rollup/plugin-json';
 import replace from '@rollup/plugin-replace';
-import {babel} from '@rollup/plugin-babel'
-import nodePolyfills from 'rollup-plugin-polyfill-node'
+import { optimizeLodashImports } from "@optimize-lodash/rollup-plugin"
 import parseStringifiedEnv from './build_config/env'
 import path from 'path'
+import stdLibBrowser from 'node-stdlib-browser'
+import {
+	handleCircularDependancyWarning
+} from 'node-stdlib-browser/helpers/rollup/plugin'
+import alias from '@rollup/plugin-alias'
+import inject from '@rollup/plugin-inject'
+
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -43,7 +49,8 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		file: 'public/build/bundle.js',
+    inlineDynamicImports: true,
 	},
 	plugins: [
 		svelte({
@@ -65,9 +72,6 @@ export default {
 			browser: true,
 			preferBuiltins: false,
 			dedupe: ['svelte'],
-			alias: {
-				'assert': 'assert',
-			}
 		}),
 		commonjs({
 			// transformMixedEsModules: true,
@@ -87,10 +91,22 @@ export default {
 		production && terser(),
 
 		json(),
-		replace(parseStringifiedEnv(envPath)),
-		babel({babelHelpers: 'bundled'}),
-		nodePolyfills()
+		replace({
+      ...parseStringifiedEnv(envPath),
+      preventAssignment: true
+    }),
+		alias({
+			entries: stdLibBrowser
+		}),
+		inject({
+			process: stdLibBrowser.process,
+			Buffer: [stdLibBrowser.buffer, 'Buffer']
+		}),
+    optimizeLodashImports(),
 	],
+	onwarn: (warning, rollupWarn) => {
+		handleCircularDependancyWarning(warning, rollupWarn);
+	},
 	watch: {
 		clearScreen: false
 	}

@@ -11,9 +11,10 @@
   export let endDate;
   export let ticketMetadata;
   export let ticketNft;
+  export let attended;
 
-  let buttonText = "Verify";
-  let buttonDisabled = false;
+  let buttonText = attended ? "Verified" : "Verify";
+  let buttonDisabled = Boolean(attended);
 
   const verifyTicket = async () => {
     buttonDisabled = true;

@@ -32,6 +32,7 @@
       seatName={ticket?.seat_name}
       ticketMetadata={ticket?.ticket_metadata}
       ticketNft={ticket?.ticket_nft}
+      attended={ticket?.attended}
     />
   </div>
 </div>

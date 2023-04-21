@@ -10,7 +10,6 @@
   export let event = {};
   export let nftMetadata = {};
   const eventId = get(qs).eventId;
-  console.log(`🚀 ~ eventId:`, eventId);
 
   web3.subscribe(async ($web3) => {
     if (await $web3 && eventId) {

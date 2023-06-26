@@ -1,7 +1,7 @@
-import * as anchor from '@project-serum/anchor'
-
-const {Connection} = anchor.web3
+import {Connection, JsonRpcProvider} from '@mysten/sui.js'
 
 export const initConnection = rpcServer => {
-  return new Connection(rpcServer, 'confirmed')
+  return new JsonRpcProvider(
+    new Connection({fullnode: rpcServer})
+  )
 }

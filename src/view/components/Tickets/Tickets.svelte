@@ -1,6 +1,6 @@
 <script>
   import {get} from "svelte/store";
-  import {web3, qs, firebase} from "../../../data/store";
+  import {wallet, qs, firebase} from "../../../data/store";
   import {fetchTickets} from "../../../services/ticket";
   import Card from "../Card/Card.svelte";
   import {fetchEvent, fetchMetadata} from "../../../services/s3";
@@ -11,8 +11,8 @@
   export let nftMetadata = {};
   const eventId = get(qs).eventId;
 
-  web3.subscribe(async ($web3) => {
-    if (await $web3 && eventId) {
+  wallet.subscribe(async ($wallet) => {
+    if (await $wallet && eventId) {
 
       const eventResponse = await fetchEvent(firebase, eventId);
       event = eventResponse.result[0];

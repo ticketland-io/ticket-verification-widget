@@ -1,6 +1,6 @@
 <script>
   import {afterUpdate} from "svelte";
-  import {web3, user, firebase} from "../../../data/store";
+  import {wallet, user, firebase} from "../../../data/store";
   import {addToIDB} from "../../../services/helpers";
   import LoginForm from "./LoginForm.svelte";
   import "./styles.css";
@@ -17,11 +17,11 @@
     }
   });
 
-  web3.subscribe(async (_web3) => {
-    const web3 = await _web3;
+  wallet.subscribe(async (_wallet) => {
+    const wallet = await _wallet;
 
-    if (web3) {
-      publicKey = web3.wallet.publicKey.toBase58();
+    if (wallet) {
+      publicKey = wallet.publicKey.toSuiAddress();
     }
   });
 

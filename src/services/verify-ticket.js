@@ -20,12 +20,11 @@ const VerifyTicketMsgType = {
   ]
 }
 
-export const verify = async (web3, eventId, codeChallenge, ticketMetadata, ticketNft, ticketOwnerPubkey, targetOrigin) => {
+export const verify = async (signer, eventId, codeChallenge, ticketMetadata, ticketNft, ticketOwnerPubkey, targetOrigin) => {
   const msg = new VerifyTicketMsg(eventId, codeChallenge, ticketMetadata)
-  const schema = new Map([[VerifyTicketMsg, VerifyTicketMsgType]]);
-
+  const schema = new Map([[VerifyTicketMsg, VerifyTicketMsgType]])
   const message = borsh.serialize(schema, msg)
-  const sig = await web3.anchorProvider.wallet.signMessage(message)
+  const {signature} = (await signer.signMessage({message}))
 
   const response = await verifyTicket(
     ticketMetadata,
@@ -33,7 +32,7 @@ export const verify = async (web3, eventId, codeChallenge, ticketMetadata, ticke
     eventId,
     codeChallenge,
     ticketOwnerPubkey, 
-    bs58.encode(sig)
+    bs58.encode(signature)
   )
 
   const data = {

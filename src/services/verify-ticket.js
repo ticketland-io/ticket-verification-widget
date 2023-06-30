@@ -1,13 +1,14 @@
 import * as borsh from 'borsh'
 import * as bs58 from 'bs58'
+import keccak256 from 'keccak256'
 import {verifyTicket} from './ticket'
 
 // TODO: move all this logic to the online ticket verification app
 class VerifyTicketMsg {
-  constructor(eventId, codeChallenge, ticketMetadata) {
+  constructor(eventId, codeChallenge, cntSuiAddress) {
     this.eventId = eventId
     this.codeChallenge = codeChallenge
-    this.ticketMetadata = ticketMetadata
+    this.cntSuiAddress = cntSuiAddress
   }
 }
 
@@ -16,23 +17,23 @@ const VerifyTicketMsgType = {
   "fields": [
     ['eventId', 'string'],
     ['codeChallenge', 'string'],
-    ['ticketMetadata', 'string'],
+    ['cntSuiAddress', 'string'],
   ]
 }
 
-export const verify = async (signer, eventId, codeChallenge, ticketMetadata, ticketNft, ticketOwnerPubkey, targetOrigin) => {
-  const msg = new VerifyTicketMsg(eventId, codeChallenge, ticketMetadata)
+export const verify = async (wallet, eventId, codeChallenge, cntSuiAddress, ticketOwnerPubkey, targetOrigin) => {
+  const msg = new VerifyTicketMsg(eventId, codeChallenge, cntSuiAddress)
   const schema = new Map([[VerifyTicketMsg, VerifyTicketMsgType]])
   const message = borsh.serialize(schema, msg)
-  const {signature} = (await signer.signMessage({message}))
+  const signature = (await wallet.signMessage(message))
 
   const response = await verifyTicket(
-    ticketMetadata,
-    ticketNft,
+    cntSuiAddress,
     eventId,
     codeChallenge,
-    ticketOwnerPubkey, 
-    bs58.encode(signature)
+    ticketOwnerPubkey,
+      Buffer.from(signature).toString('hex')
+
   )
 
   const data = {

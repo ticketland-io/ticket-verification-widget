@@ -9,8 +9,7 @@
   export let seatName;
   export let startDate;
   export let endDate;
-  export let ticketMetadata;
-  export let ticketNft;
+  export let cntSuiAddress;
   export let attended;
 
   let buttonText = attended ? "Verified" : "Verify";
@@ -25,12 +24,11 @@
       const _wallet = await wallet.get();
 
       await verify(
-        _wallet.signer,
+        _wallet,
         normalizeEventId(_qs.eventId),
         _qs.codeChallenge,
-        ticketMetadata,
-        ticketNft,
-        _account.pubkey,
+        cntSuiAddress,
+        _wallet.signer.keypair.getPublicKey().toString(),
         _qs.targetOrigin
       );
       buttonText = "Verified";

@@ -9,16 +9,17 @@
     "start": "sirv public --http2 --cert certs/cert.pem --key certs/key.pem"
   },
   "dependencies": {
-    "@apocentre/solana-web3": "Apocentre/solana-web3",
-    "@project-serum/anchor": "^0.25.0",
+    "@mysten/sui.js": "^0.36.0",
+    "@solana/web3.js": "^1.77.3",
     "@ticketland-io/firebase-auth": "^0.1.0",
-    "@ticketland-io/solana-wallet": "^0.1.0",
-    "@ticketland-io/wallet-core": "^0.1.0",
+    "@ticketland-io/sui-wallet": "file:../wallet/packages/sui-wallet",
+    "@ticketland-io/wallet-core": "file:../wallet/packages/core",
     "@ticketland-io/web-enclave": "^0.1.0",
     "assert": "^2.0.0",
     "borsh": "^0.7.0",
     "bs58": "^5.0.0",
     "date-fns": "^2.29.3",
+    "keccak256": "^1.0.6",
     "svelte": "^3.49.0",
     "svelte-asyncable": "^2.1.0"
   },

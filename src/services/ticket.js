@@ -3,7 +3,7 @@ import {firebase} from '../data/store'
 
 export const fetchTickets = async (eventId) => {
   return await fetch(
-    `${process.env.TICKETLAND_API}/tickets?event_id=${eventId}`,
+    `${process.env.TICKETLAND_API}/cnts?event_id=${eventId}`,
     'GET',
     {
       headers: createBearerHeader(await firebase.accessToken()),
@@ -11,17 +11,21 @@ export const fetchTickets = async (eventId) => {
   )
 }
 
-export const verifyTicket = async (ticketMetadata, ticketNft, eventId, codeChallenge, ticketOwnerPubkey, sig) => {
+export const verifyTicket = async (
+  cntSuiAddress,
+  eventId,
+  codeChallenge,
+  ticketOwnerPubkey,
+  sig
+) => {
   return await fetch(
-    `${process.env.TICKETLAND_API}/tickets/${ticketNft}/verifications`,
+    `${process.env.TICKETLAND_API}/cnts/${cntSuiAddress}/verifications`,
     'POST',
     {
       body: {
         event_id: eventId,
         code_challenge: codeChallenge,
         ticket_owner_pubkey: ticketOwnerPubkey,
-        ticket_metadata: ticketMetadata,
-        ticket_nft: ticketNft,
         sig,
       }
     }

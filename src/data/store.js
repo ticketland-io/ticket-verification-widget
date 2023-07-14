@@ -1,22 +1,18 @@
 import {asyncable} from 'svelte-asyncable'
 import {writable} from 'svelte/store'
-import Web3 from '@apocentre/solana-web3'
 import {WalletCore, constants} from '@ticketland-io/wallet-core'
-import SolanaWallet from '@ticketland-io/solana-wallet'
+import SuiWallet from '@ticketland-io/sui-wallet'
 import Enclave from '@ticketland-io/web-enclave'
 import FirebaseAuth from '@ticketland-io/firebase-auth'
 
-const Wallet = () => SolanaWallet({enclave: Enclave()})
+const Wallet = () => SuiWallet({enclave: Enclave()})
 const walletCore = WalletCore({Wallet})
 export const firebase = FirebaseAuth()
 
 const web3AuthConfig = {
   clientId: process.env.WEB3_AUTH_CLIENT_ID,
   verifier: process.env.WEB3_AUTH_VERIFIER,
-  chainId: process.env.CHAIN_ID,
-  chainNamespace: constants.CHAIN_NAMESPACES.SOLANA,
-  rpcTarget: process.env.CLUSTER_ENDPOINT,
-  web3AuthNetwork: process.env.WEB_AUTH_NETWORK,
+  chainNamespace: constants.CHAIN_NAMESPACES.OTHER,
   domain: process.env.DAPP_DOMAIN,
 }
 
@@ -32,16 +28,14 @@ export const qs = writable(Object.fromEntries(urlSearchParams.entries()))
 export const user = asyncable(() => null)
 export const connection = asyncable(() => null)
 
-export const web3 = asyncable(async ($user, $connection) => {
+export const wallet = asyncable(async ($user, $connection) => {
   const user = await $user
   const connection = await $connection
 
   if(user && connection) {
-    const web3 = Web3()
-    const custodyWallet = await walletCore.bootstrap()
-    await web3.init(connection, custodyWallet)
+    const custodyWallet = await walletCore.bootstrap(process.env.CLUSTER_ENDPOINT)
 
-    return web3
+    return custodyWallet
   }
 }, undefined, [user, connection])
 

@@ -1,6 +1,6 @@
 <script>
   import {get} from "svelte/store";
-  import {web3, qs, account} from "../../../data/store";
+  import {wallet, qs, account} from "../../../data/store";
   import {verify} from "../../../services/verify-ticket";
   import {normalizeEventId} from "../../../services/ticket";
   import "./styles.css";
@@ -9,8 +9,7 @@
   export let seatName;
   export let startDate;
   export let endDate;
-  export let ticketMetadata;
-  export let ticketNft;
+  export let cntSuiAddress;
   export let attended;
 
   let buttonText = attended ? "Verified" : "Verify";
@@ -22,15 +21,14 @@
     try {
       const _qs = get(qs);
       const _account = await account.get();
-      const _web3 = await web3.get();
+      const _wallet = await wallet.get();
 
       await verify(
-        _web3,
+        _wallet,
         normalizeEventId(_qs.eventId),
         _qs.codeChallenge,
-        ticketMetadata,
-        ticketNft,
-        _account.pubkey,
+        cntSuiAddress,
+        _wallet.signer.keypair.getPublicKey().toString(),
         _qs.targetOrigin
       );
       buttonText = "Verified";
